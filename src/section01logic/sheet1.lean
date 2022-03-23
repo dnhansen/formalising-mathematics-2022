@@ -163,27 +163,60 @@ variables (S T : Prop)
 
 example : (P → R) → (S → Q) → (R → T) → (Q → R) → S → T :=
 begin
-  sorry
+  intro hPR,
+  intro hSQ,
+  intro hRT,
+  intro hQR,
+  intro hS,
+  apply hRT,
+  apply hQR,
+  apply hSQ,
+  exact hS,
 end
 
 example : (P → Q) → ((P → Q) → P) → Q :=
 begin
-  sorry
+  intro hPQ,
+  intro hPQP,
+  apply hPQ,
+  apply hPQP,
+  intro hP,
+  apply hPQ,
+  exact hP,
 end
 
 example : ((P → Q) → R) → ((Q → R) → P) → ((R → P) → Q) → P :=
 begin
-  sorry
+  intro hPQR,
+  intro hQRP,
+  intro hRPQ,
+  apply hQRP,
+  intro hQ,
+  apply hPQR,
+  intro hP,
+  exact hQ,
 end
 
 example : ((Q → P) → P) → (Q → R) → (R → P) → P :=
 begin
-  sorry
+  intro hQPP,
+  intro hQR,
+  intro hRP,
+  apply hQPP,
+  intro hQ,
+  apply hRP,
+  apply hQR,
+  exact hQ,
 end
 
 example : (((P → Q) → Q) → Q) → (P → Q) :=
 begin
-  sorry
+  intro hPQQQ,
+  intro hP,
+  apply hPQQQ,
+  intro hPQ,
+  apply hPQ,
+  exact hP,
 end
 
 example :
@@ -191,5 +224,14 @@ example :
   ((((P → P) → Q) → (P → P → Q)) → R) →
   (((P → P → Q) → ((P → P) → Q)) → R) → R :=
 begin
-  sorry
+  intro hPQQPQQR,
+  intro hPPQPPQ,
+  intro hPPQPPQR,
+  apply hPPQPPQ,
+  intro hPPQ,
+  intro hP,
+  intro hP2,
+  apply hPPQ,
+  intro hP3,
+  exact hP,
 end
